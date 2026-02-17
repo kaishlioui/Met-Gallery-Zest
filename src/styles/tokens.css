@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   MET COLLECTION EXPLORER — DESIGN SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+
+  /* ── 1. COLOR PRIMITIVES ─────────────────────────────────────────────── */
+  --color-ink-950: #1a1410;
+  --color-ink-800: #2a211a;
+  --color-ink-700: #3d322a;
+  --color-ink-500: #7a6a5e;
+
+  --color-cream-50: #faf8f4;
+  --color-cream-100: #f5f0e8;
+  --color-cream-200: #ede5d4;
+  --color-cream-300: #e0d4bf;
+
+  --color-gold-600: #b8882a;
+  --color-gold-500: #d4a84b;
+  --color-gold-200: #f0e4c0;
+  --color-gold-100: #f8f1dc;
+
+  /* ── 2. SEMANTIC TOKENS ──────────────────────────────────────────────── */
+  --surface-base: var(--color-cream-100);
+  --surface-raised: var(--color-cream-50);
+  --surface-sunken: var(--color-cream-200);
+  --surface-overlay: var(--color-cream-300);
+  --surface-inverse: var(--color-ink-950);
+
+  --accent: var(--color-gold-600);
+  --accent-light: var(--color-gold-500);
+  --accent-pale: var(--color-gold-200);
+  --accent-subtle: var(--color-gold-100);
+
+  --text-primary: var(--color-ink-950);
+  --text-secondary: var(--color-ink-700);
+  --text-tertiary: var(--color-ink-500);
+  --text-on-inverse: var(--color-cream-100);
+  --text-on-inverse-muted: rgba(245, 240, 232, 0.5);
+  --text-on-inverse-faint: rgba(245, 240, 232, 0.35);
+  --text-accent: var(--color-gold-600);
+  --text-accent-light: var(--color-gold-500);
+
+  /* Consolidated border & overlay rgba — gold with 3 standard opacities */
+  --rgba-gold-subtle: rgba(184, 136, 42, 0.1);    /* 10% — hover states, light backgrounds */
+  --rgba-gold-default: rgba(184, 136, 42, 0.25);  /* 25% — standard borders */
+  --rgba-gold-strong: rgba(184, 136, 42, 0.45);   /* 45% — emphasized elements */
+
+  --border-subtle: var(--rgba-gold-subtle);
+  --border-default: var(--rgba-gold-default);
+  --border-strong: var(--rgba-gold-strong);
+  --border-inverse: rgba(184, 136, 42, 0.3);      /* 30% — on dark inverse backgrounds */
+
+  /* Consolidated dark overlay rgba — ink with 3 standard opacities */
+  --rgba-dark-light: rgba(26, 20, 16, 0.1);       /* 10% — very subtle shadows/overlays */
+  --rgba-dark-medium: rgba(26, 20, 16, 0.3);      /* 30% — moderate overlays */
+  --rgba-dark-heavy: rgba(26, 20, 16, 0.65);      /* 65% — dark overlays, blur backdrops */
+
+  /* Legacy aliases for backward compatibility */
+  --border: 1px solid var(--border-default);
+
+  /* ── 3. TYPOGRAPHY ───────────────────────────────────────────────────── */
+  --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
+  --font-body: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --font-text: 'EB Garamond', 'Garamond', Georgia, serif;
+
+  /* Type scale — minor third (×1.2) from 16px base */
+  --text-2xs: 0.5rem;
+  /*  8px — micro badges */
+  --text-xs: 0.625rem;
+  /* 10px — eyebrow / ALL-CAPS label */
+  --text-sm: 0.75rem;
+  /* 12px — meta, captions */
+  --text-md: 0.875rem;
+  /* 14px — small body */
+  --text-base: 1rem;
+  /* 16px — body */
+  --text-lg: 1.125rem;
+  /* 18px — large body */
+  --text-xl: 1.25rem;
+  /* 20px — small heading */
+  --text-2xl: 1.5rem;
+  /* 24px — section heading */
+  --text-3xl: 1.875rem;
+  /* 30px — modal title */
+  --text-4xl: 2.25rem;
+  /* 36px — display */
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Letter spacing — essentials only */
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.1em;
+  --tracking-widest: 0.18em;
+  --tracking-caps: 0.2em;
+
+  /* ── 4. SPACING — 4px base, 8pt grid from space-2 ───────────────────── */
+  --space-px: 1px;
+  --space-1: 0.25rem;
+  /*  4px */
+  --space-2: 0.5rem;
+  /*  8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-5: 1.25rem;
+  /* 20px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-7: 1.75rem;
+  /* 28px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-10: 2.5rem;
+  /* 40px */
+  --space-12: 3rem;
+  /* 48px */
+
+  /* ── 5. BORDER RADIUS ────────────────────────────────────────────────── */
+  --radius-sm: 2px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+  --radius: var(--radius-sm);
+
+  /* ── 6. SHADOW ───────────────────────────────────────────────────────── */
+  --shadow-card: 0 2px 12px var(--rgba-dark-light), 0 1px 3px var(--rgba-dark-light);
+  --shadow-lift: 0 8px 32px var(--rgba-dark-light), 0 2px 8px var(--rgba-dark-light);
+  --shadow-xl: 0 16px 56px var(--rgba-dark-medium), 0 4px 16px var(--rgba-dark-light);
+  --shadow-2xl: 0 24px 80px var(--rgba-dark-heavy);
+
+  /* ── 7. MOTION ───────────────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-slower: 500ms;
+
+  --transition: var(--duration-slow) var(--ease-in-out);
+  --transition-fast: var(--duration-fast) var(--ease-in-out);
+
+  /* ── 8. Z-INDEX ──────────────────────────────────────────────────────── */
+  --z-sticky: 100;
+  --z-modal: 200;
+  --z-overlay: 299;
+  --z-drawer: 300;
+
+  /* ── 9. LAYOUT ───────────────────────────────────────────────────────── */
+  --header-height: 72px;
+  --sidebar-width: 280px;
+}
