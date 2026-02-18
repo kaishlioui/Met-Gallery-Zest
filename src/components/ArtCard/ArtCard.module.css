@@ -1,0 +1,336 @@
+/* ── Grid card ───────────────────────────────────────────────────────────── */
+.card {
+  background:     var(--surface-raised);
+  border:         var(--border);
+  border-radius:  var(--radius);
+  box-shadow:     var(--shadow-card);
+  cursor:         pointer;
+  transition:     transform var(--transition), box-shadow var(--transition);
+  overflow:       hidden;
+  display:        flex;
+  flex-direction: column;
+  animation:      fadeUp var(--duration-slower) var(--ease-out) both;
+}
+.card:hover         { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:nth-child(1) { animation-delay: 0.03s; }
+.card:nth-child(2) { animation-delay: 0.06s; }
+.card:nth-child(3) { animation-delay: 0.09s; }
+.card:nth-child(4) { animation-delay: 0.12s; }
+.card:nth-child(5) { animation-delay: 0.15s; }
+.card:nth-child(6) { animation-delay: 0.18s; }
+.card:nth-child(7) { animation-delay: 0.21s; }
+.card:nth-child(8) { animation-delay: 0.24s; }
+
+.imageWrap {
+  aspect-ratio: 4 / 3;
+  overflow:     hidden;
+  background:   var(--surface-sunken);
+  position:     relative;
+}
+.imageWrap img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-in-out);
+  display:    block;
+}
+.card:hover .imageWrap img { transform: scale(1.05); }
+
+.highlightBadge {
+  position:       absolute;
+  top:            var(--space-2);
+  right:          var(--space-2);
+  background:     var(--accent);
+  color:          var(--surface-inverse);
+  font-family:    var(--font-display);
+  font-size:      var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  padding:        var(--space-1) var(--space-2);
+  border-radius:  var(--radius);
+  z-index:        1;
+}
+
+/* inherits font-body from body; font-style overrides to italic */
+.noImage {
+  width:           100%;
+  height:          100%;
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  color:           var(--text-tertiary);
+  font-style:      italic;
+  font-size:       var(--text-md);
+  gap:             var(--space-2);
+}
+.noImageIcon { font-size: var(--text-4xl); opacity: 0.3; }
+
+.body {
+  padding:        var(--space-4);
+  flex:           1;
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-1);
+}
+
+.dept {
+  font-family:    var(--font-display);
+  font-size:      var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--text-accent);
+}
+
+/* inherits font-body */
+.title {
+  font-size:   var(--text-base);
+  font-weight: var(--weight-medium);
+  color:       var(--text-primary);
+  line-height: var(--leading-snug);
+  margin-top:  var(--space-1);
+}
+
+/* inherits font-body */
+.date {
+  font-size: var(--text-sm);
+  color:     var(--text-tertiary);
+}
+
+.artist {
+  font-family:  var(--font-text);
+  font-style:   italic;
+  font-size:    var(--text-md);
+  color:        var(--text-secondary);
+  margin-top:   auto;
+  padding-top:  var(--space-2);
+}
+
+/* ── Skeleton ────────────────────────────────────────────────────────────── */
+.skeleton {
+  background:    var(--surface-raised);
+  border:        var(--border);
+  border-radius: var(--radius);
+  overflow:      hidden;
+}
+.skeletonImage {
+  aspect-ratio:    4 / 3;
+  background:      linear-gradient(90deg, var(--surface-sunken) 25%, var(--surface-overlay) 50%, var(--surface-sunken) 75%);
+  background-size: 200% 100%;
+  animation:       shimmer 1.5s infinite;
+}
+.skeletonBody {
+  padding:        var(--space-4);
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-2);
+}
+.skeletonLine {
+  height:          12px;
+  background:      linear-gradient(90deg, var(--surface-sunken) 25%, var(--surface-overlay) 50%, var(--surface-sunken) 75%);
+  background-size: 200% 100%;
+  animation:       shimmer 1.5s infinite;
+  border-radius:   var(--radius);
+}
+.short  { width: 45%; }
+.medium { width: 72%; }
+.long   { width: 90%; }
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── List row ────────────────────────────────────────────────────────────── */
+.listRow {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-4);
+  padding:       var(--space-2) var(--space-4);
+  background:    var(--surface-raised);
+  border:        var(--border);
+  border-radius: var(--radius);
+  cursor:        pointer;
+  transition:    background var(--transition), box-shadow var(--transition), transform var(--transition);
+  animation:     fadeUp var(--duration-normal) var(--ease-out) both;
+}
+.listRow:hover {
+  background:  var(--surface-base);
+  box-shadow:  var(--shadow-card);
+  transform:   translateX(3px);
+}
+.listRow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.listThumb {
+  width:           68px;
+  height:          52px;
+  flex-shrink:     0;
+  border-radius:   var(--radius);
+  overflow:        hidden;
+  background:      var(--surface-sunken);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+.listThumb img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+.listRow:hover .listThumb img { transform: scale(1.08); }
+
+.listBody {
+  flex:           1;
+  min-width:      0;
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-1);
+}
+
+/* inherits font-body */
+.listTitle {
+  font-size:     var(--text-base);
+  font-weight:   var(--weight-medium);
+  color:         var(--text-primary);
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+.listMeta {
+  display:     flex;
+  align-items: center;
+  flex-wrap:   wrap;
+  gap:         var(--space-1);
+  font-family: var(--font-text);
+  font-size:   var(--text-sm);
+  color:       var(--text-tertiary);
+}
+.dot { opacity: 0.4; }
+
+.listDept {
+  font-family:    var(--font-display);
+  font-size:      var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--text-accent);
+}
+
+.listBadge {
+  font-size:   var(--text-sm);
+  color:       var(--text-accent);
+  flex-shrink: 0;
+  opacity:     0.75;
+}
+
+.skeletonList {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-4);
+  padding:       var(--space-2) var(--space-4);
+  background:    var(--surface-raised);
+  border:        var(--border);
+  border-radius: var(--radius);
+}
+.skeletonThumb {
+  width:           68px;
+  height:          52px;
+  flex-shrink:     0;
+  border-radius:   var(--radius);
+  background:      linear-gradient(90deg, var(--surface-sunken) 25%, var(--surface-overlay) 50%, var(--surface-sunken) 75%);
+  background-size: 200% 100%;
+  animation:       shimmer 1.5s infinite;
+}
+
+/* ── Compact row ─────────────────────────────────────────────────────────── */
+.compactRow {
+  display:       flex;
+  align-items:   baseline;
+  gap:           var(--space-2);
+  padding:       var(--space-1) var(--space-3);
+  cursor:        pointer;
+  border-radius: var(--radius);
+  transition:    background var(--transition);
+  animation:     fadeUp var(--duration-fast) var(--ease-out) both;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.compactRow:hover         { background: var(--surface-sunken); }
+.compactRow:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.compactDot {
+  color:       var(--text-accent);
+  font-size:   var(--text-sm);
+  flex-shrink: 0;
+  width:       14px;
+  text-align:  center;
+  opacity:     0.7;
+}
+
+/* inherits font-body */
+.compactTitle {
+  font-size:     var(--text-base);
+  color:         var(--text-primary);
+  flex:          1;
+  min-width:     0;
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+}
+
+.compactArtist {
+  font-family:   var(--font-text);
+  font-style:    italic;
+  font-size:     var(--text-md);
+  color:         var(--text-secondary);
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  max-width:     160px;
+}
+
+/* inherits font-body */
+.compactDate {
+  font-size:   var(--text-sm);
+  color:       var(--text-tertiary);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.skeletonCompact {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-2);
+  padding:       var(--space-1) var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.skeletonDot {
+  width:         14px;
+  height:        10px;
+  border-radius: var(--radius-full);
+  background:    var(--surface-overlay);
+  flex-shrink:   0;
+}
+
+/* ── Error states ────────────────────────────────────────────────────────── */
+.errorCard  { pointer-events: none; opacity: 0.4; }
+.errorInner {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  height:          100%;
+  gap:             var(--space-2);
+  padding:         var(--space-4);
+}
+.errorIcon { font-size: var(--text-lg); opacity: 0.5; }
+.errorMsg  { font-size: var(--text-sm); color: var(--text-tertiary); font-style: italic; }
+.errorRow  { pointer-events: none; opacity: 0.4; }
+.errorText { font-style: italic; color: var(--text-tertiary) !important; }

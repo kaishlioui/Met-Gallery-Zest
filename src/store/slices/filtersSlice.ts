@@ -8,7 +8,7 @@ export const DEFAULT_FILTERS: FilterParams = {
   culture:      '',
   dateBegin:    null,
   dateEnd:      null,
-  isHighlight:  false,
+  isHighlight:  true,
 };
 
 const filtersSlice = createSlice({

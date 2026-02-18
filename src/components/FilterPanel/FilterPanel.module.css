@@ -1,0 +1,189 @@
+/* ── Shared — sidebar + drawer ───────────────────────────────────────────── */
+.panel,
+.drawer {
+  background:   var(--surface-inverse);
+  padding:      var(--space-8) var(--space-7);
+  border-right: 1px solid var(--border-inverse);
+  overflow-y:   auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Desktop: sticky sidebar ─────────────────────────────────────────────── */
+.panel {
+  min-height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - var(--header-height));
+  position:   sticky;
+  top:        var(--header-height);
+}
+
+/* ── Mobile: slide-in drawer ─────────────────────────────────────────────── */
+.drawer {
+  display:    none;
+  position:   fixed;
+  top:        0;
+  left:       0;
+  width:      min(300px, 85vw);
+  height:     100vh;
+  height:     100dvh;
+  z-index:    var(--z-drawer);
+  transform:  translateX(-100%);
+  transition: transform var(--duration-slow) var(--ease-in-out);
+  box-shadow: var(--shadow-2xl);
+}
+.drawerOpen { transform: translateX(0); }
+
+.overlay {
+  position:        fixed;
+  inset:           0;
+  background:      var(--backdrop-drawer);
+  z-index:         var(--z-overlay);
+  animation:       fadeIn var(--duration-normal) var(--ease-out);
+  backdrop-filter: blur(2px);
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Heading ─────────────────────────────────────────────────────────────── */
+.heading {
+  font-family:     var(--font-display);
+  font-size:       var(--text-xs);
+  font-weight:     var(--weight-medium);
+  letter-spacing:  var(--tracking-caps);
+  text-transform:  uppercase;
+  color:           var(--text-accent);
+  margin-bottom:   var(--space-7);
+  padding-bottom:  var(--space-3);
+  border-bottom:   1px solid var(--border-inverse);
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+}
+.headingRight { display: flex; align-items: center; gap: var(--space-2); }
+
+.resetBtn {
+  font-family:    var(--font-display);
+  font-size:      var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--text-accent);
+  background:     none;
+  border:         1px solid var(--border-inverse);
+  padding:        var(--space-1) var(--space-3);
+  cursor:         pointer;
+  border-radius:  var(--radius);
+  transition:     background var(--transition), border-color var(--transition);
+}
+.resetBtn:hover { background: var(--hover-on-inverse); border-color: var(--accent); }
+
+/* Close button — visible in drawer only */
+.closeBtn {
+  display:         none;
+  background:      none;
+  border:          1px solid var(--border-inverse);
+  color:           var(--text-on-inverse-muted);
+  width:           28px;
+  height:          28px;
+  border-radius:   var(--radius);
+  cursor:          pointer;
+  font-size:       var(--text-md);
+  align-items:     center;
+  justify-content: center;
+  line-height:     1;
+  flex-shrink:     0;
+  transition:      background var(--transition), border-color var(--transition), color var(--transition);
+}
+.closeBtn:hover { background: var(--hover-on-inverse-strong); border-color: var(--accent); color: var(--text-on-inverse); }
+
+/* ── Form controls ───────────────────────────────────────────────────────── */
+.group { margin-bottom: var(--space-7); }
+
+.label {
+  font-family:    var(--font-display);
+  font-size:      var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--text-on-inverse-faint);
+  display:        block;
+  margin-bottom:  var(--space-2);
+}
+
+/* inherits font-body from body */
+.input {
+  width:          100%;
+  background:     var(--input-bg);
+  border:         1px solid var(--border-subtle);
+  color:          var(--text-on-inverse);
+  font-family:    var(--font-text);
+  font-size:      var(--text-base);
+  padding:        var(--space-2) var(--space-3);
+  border-radius:  var(--radius);
+  outline:        none;
+  transition:     border-color var(--transition), background var(--transition);
+  appearance:        none;
+  -webkit-appearance: none;
+}
+.input:focus        { border-color: var(--accent); background: var(--input-bg-focus); }
+.input option       { background: var(--surface-inverse); color: var(--text-on-inverse); }
+.input::placeholder { color: var(--input-placeholder); font-style: italic; }
+
+.dateRow {
+  display:               grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap:                   var(--space-2);
+  align-items:           center;
+}
+.dateSep { color: var(--text-accent); font-size: var(--text-md); text-align: center; }
+
+/* ── Toggle ──────────────────────────────────────────────────────────────── */
+.toggle {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding:         var(--space-2) 0;
+  cursor:          pointer;
+  border-bottom:   1px solid var(--border-subtle);
+  margin-bottom:   var(--space-2);
+}
+/* inherits font-body */
+.toggleLabel {
+  font-size:      var(--text-base);
+  color:          var(--text-on-inverse-muted);
+  letter-spacing: var(--tracking-wide);
+}
+.toggleSwitch {
+  width:         36px;
+  height:        20px;
+  background:    var(--toggle-track-bg);
+  border-radius: var(--radius-full);
+  position:      relative;
+  transition:    background var(--transition);
+  border:        1px solid var(--border-inverse);
+  flex-shrink:   0;
+}
+.toggleSwitch::after {
+  content:       '';
+  position:      absolute;
+  width:         14px;
+  height:        14px;
+  background:    var(--text-on-inverse);
+  border-radius: var(--radius-full);
+  top:           2px;
+  left:          2px;
+  transition:    transform var(--transition);
+}
+.toggleSwitch.on        { background: var(--accent); border-color: var(--accent); }
+.toggleSwitch.on::after { transform: translateX(16px); }
+
+.ornament {
+  text-align:  center;
+  margin-top:  var(--space-8);
+  color:       var(--accent);
+  font-size:   var(--text-base);
+  opacity:     0.5;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .panel    { display: none; }
+  .drawer   { display: block; }
+  .closeBtn { display: flex; }
+}

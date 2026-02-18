@@ -1,0 +1,268 @@
+/* ── Backdrop ────────────────────────────────────────────────────────────── */
+.backdrop {
+  position:        fixed;
+  inset:           0;
+  background:      var(--backdrop-modal);
+  z-index:         var(--z-modal);
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: center;
+  padding:         var(--space-10) var(--space-6);
+  overflow-y:      auto;
+  animation:       fadeIn var(--duration-normal) var(--ease-out);
+  backdrop-filter: blur(4px);
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background:    var(--surface-base);
+  max-width:     920px;
+  width:         100%;
+  border:        1px solid var(--accent);
+  border-radius: var(--radius-lg);
+  box-shadow:    var(--shadow-2xl);
+  animation:     slideUp var(--duration-slow) var(--ease-in-out);
+  overflow:      hidden;
+  margin:        auto 0;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.header {
+  background:      var(--surface-inverse);
+  padding:         var(--space-5) var(--space-7);
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  gap:             var(--space-4);
+  border-bottom:   1px solid var(--accent);
+}
+.dept {
+  font-family:    var(--font-display);
+  font-size:      var(--text-xs);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color:          var(--text-accent);
+  word-break:     break-word;
+  min-width:      0;
+}
+.closeBtn {
+  background:      none;
+  border:          1px solid var(--border-inverse);
+  color:           var(--text-on-inverse);
+  cursor:          pointer;
+  width:           32px;
+  height:          32px;
+  border-radius:   var(--radius);
+  font-size:       var(--text-lg);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  transition:      background var(--transition), border-color var(--transition);
+  line-height:     1;
+  flex-shrink:     0;
+}
+.closeBtn:hover { background: var(--hover-on-inverse-strong); border-color: var(--accent); }
+
+/* ── Body: two-column grid ───────────────────────────────────────────────── */
+.body { display: grid; grid-template-columns: 1fr 1fr; }
+
+/* ── Image column ────────────────────────────────────────────────────────── */
+.imageCol {
+  background:      var(--surface-inverse);
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  padding:         var(--space-8);
+  min-height:      420px;
+  border-right:    1px solid var(--border-subtle);
+  gap:             var(--space-4);
+}
+.image {
+  max-width:  100%;
+  max-height: 460px;
+  width:      100%;
+  height:     auto;
+  object-fit: contain;
+  box-shadow: var(--shadow-xl);
+}
+/* inherits font-body */
+.imagePlaceholder {
+  color:      var(--text-on-inverse-faint);
+  font-style: italic;
+  font-size:  var(--text-base);
+  text-align: center;
+}
+.thumbs {
+  display:         flex;
+  gap:             var(--space-2);
+  flex-wrap:       wrap;
+  justify-content: center;
+  max-width:       100%;
+}
+.thumb {
+  width:         52px;
+  height:        52px;
+  object-fit:    cover;
+  border:        1px solid var(--border-default);
+  cursor:        pointer;
+  transition:    opacity var(--transition), border-color var(--transition);
+  flex-shrink:   0;
+  border-radius: var(--radius);
+}
+.thumb:hover  { opacity: 0.7; }
+.activeThumb  { border-color: var(--accent); opacity: 0.65; }
+
+/* ── Info column ─────────────────────────────────────────────────────────── */
+.infoCol {
+  padding:    var(--space-8);
+  overflow-y: auto;
+  max-height: 580px;
+}
+
+/* inherits font-body */
+.title {
+  font-size:     var(--text-3xl);
+  font-weight:   var(--weight-medium);
+  line-height:   var(--leading-snug);
+  color:         var(--text-primary);
+  margin-bottom: var(--space-2);
+  word-wrap:     break-word;
+  overflow-wrap: break-word;
+}
+
+.artist {
+  font-family:    var(--font-text);
+  font-style:     italic;
+  font-size:      var(--text-lg);
+  color:          var(--text-secondary);
+  margin-bottom:  var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom:  var(--border);
+  word-wrap:      break-word;
+  overflow-wrap:  break-word;
+}
+.artistBio {
+  color:     var(--text-tertiary);
+  font-size: 0.9em;
+}
+
+.description {
+  font-family:    var(--font-text);
+  font-style:     italic;
+  font-size:      var(--text-base);
+  line-height:    var(--leading-relaxed);
+  color:          var(--text-secondary);
+  margin-bottom:  var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom:  var(--border);
+  word-wrap:      break-word;
+  overflow-wrap:  break-word;
+}
+
+.metaGrid { display: flex; flex-direction: column; gap: var(--space-3); }
+.metaItem {}
+.metaLabel {
+  font-family:    var(--font-display);
+  font-size:      var(--text-2xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--text-accent);
+  display:        block;
+  margin-bottom:  var(--space-1);
+}
+.metaValue {
+  font-family:   var(--font-text);
+  font-size:     var(--text-base);
+  color:         var(--text-secondary);
+  line-height:   var(--leading-normal);
+  word-wrap:     break-word;
+  overflow-wrap: break-word;
+}
+
+.tags {
+  display:        flex;
+  flex-wrap:      wrap;
+  gap:            var(--space-1) var(--space-2);
+  margin-top:     var(--space-6);
+  padding-top:    var(--space-6);
+  border-top:     var(--border);
+}
+/* inherits font-body */
+.tag {
+  font-size:     var(--text-md);
+  background:    var(--accent-pale);
+  color:         var(--text-secondary);
+  border:        1px solid var(--border-strong);
+  padding:       var(--space-1) var(--space-3);
+  border-radius: var(--radius);
+  word-break:    break-word;
+}
+
+.link {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             var(--space-2);
+  margin-top:      var(--space-6);
+  font-family:     var(--font-display);
+  font-size:       var(--text-xs);
+  letter-spacing:  var(--tracking-wider);
+  text-transform:  uppercase;
+  color:           var(--text-accent);
+  text-decoration: none;
+  border-bottom:   1px solid var(--border-default);
+  padding-bottom:  1px;
+  transition:      border-color var(--transition);
+}
+.link:hover { border-color: var(--accent); }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (min-width: 701px) and (max-width: 900px) {
+  .body     { grid-template-columns: 1fr; }
+  .imageCol { min-height: 300px; border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  .infoCol  { max-height: none; }
+  .card     { max-height: 90vh; overflow-y: auto; }
+}
+
+@media (max-width: 700px) {
+  .backdrop { padding: 0; align-items: flex-end; }
+  .card {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    max-height:    92dvh;
+    max-height:    92vh;
+    overflow-y:    auto;
+    border-left:   none;
+    border-right:  none;
+    border-bottom: none;
+    margin:        0;
+  }
+  .header  { padding: var(--space-4) var(--space-5); }
+  .body    { grid-template-columns: 1fr; }
+  .imageCol {
+    min-height:    200px;
+    max-height:    50vh;
+    padding:       var(--space-5);
+    border-right:  none;
+    border-bottom: 1px solid var(--border-subtle);
+    gap:           var(--space-3);
+  }
+  .image   { max-height: 40vh; }
+  .infoCol { max-height: none; padding: var(--space-5); overflow-y: visible; }
+  .title   { font-size: var(--text-2xl); }
+  .artist  { font-size: var(--text-base); }
+}
+
+@media (max-width: 400px) {
+  .header   { padding: var(--space-3) var(--space-4); }
+  .closeBtn { width: 28px; height: 28px; font-size: var(--text-base); }
+  .imageCol { padding: var(--space-4); }
+  .infoCol  { padding: var(--space-4); }
+  .title    { font-size: var(--text-xl); }
+  .artist   { font-size: var(--text-md); }
+  .thumb    { width: 44px; height: 44px; }
+}

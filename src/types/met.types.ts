@@ -13,6 +13,7 @@ export interface ArtObjectSummary {
     culture: string | null;
     classification: string | null;
     is_highlight: number;          // 0 | 1 (SQLite boolean)    object_begin_date: number | null;
+    object_begin_date: number | null;
     object_end_date: number | null;
 }
 

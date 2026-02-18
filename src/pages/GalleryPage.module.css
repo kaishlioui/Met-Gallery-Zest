@@ -1,0 +1,61 @@
+.layout {
+  display:               grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height:            calc(100vh - var(--header-height));
+  align-items:           start;
+}
+
+.main {
+  padding:   var(--space-8) var(--space-10);
+  min-width: 0; 
+}
+
+/* ── Top bar: filter button + toolbar ───────────────────────────────────── */
+.topBar {
+  display:       flex;
+  align-items:   stretch;   /* children match height */
+  gap:           var(--space-3);
+  margin-bottom: var(--space-5);
+  min-width:     0;
+}
+
+/* Mobile filter button — hidden on desktop */
+.mobileFilterBtn {
+  display:        none;
+  align-items:    center;
+  gap:            var(--space-2);
+  font-family:    var(--font-display);
+  font-size:      var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color:          var(--text-tertiary);
+  background:     var(--surface-raised);
+  border:         var(--border);
+  border-radius:  var(--radius);
+  padding:        var(--space-2) var(--space-3);
+  cursor:         pointer;
+  transition:     border-color var(--transition), color var(--transition);
+  white-space:    nowrap;
+  flex-shrink:    0;
+}
+.mobileFilterBtn:hover       { border-color: var(--accent); color: var(--text-accent); }
+.mobileFilterBtnActive       { border-color: var(--border-strong); color: var(--text-accent); }
+
+.activeDot {
+  width:         6px;
+  height:        6px;
+  background:    var(--accent);
+  border-radius: var(--radius-full);
+  flex-shrink:   0;
+}
+
+/* ── ≤900px ─────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .main   { padding: var(--space-5) var(--space-4); }
+  .mobileFilterBtn { display: inline-flex; }
+}
+
+@media (max-width: 480px) {
+  .main { padding: var(--space-4) var(--space-3); }
+}

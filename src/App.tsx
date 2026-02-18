@@ -1,10 +1,11 @@
-function App() {
+import { Header } from './components/Layout/Header';
+import { GalleryPage } from './pages/GalleryPage';
 
+export function App() {
   return (
     <>
-    Hello
+      <Header />
+      <GalleryPage />
     </>
-  )
+  );
 }
-
-export default App

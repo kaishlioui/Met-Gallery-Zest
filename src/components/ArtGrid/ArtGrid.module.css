@@ -1,0 +1,84 @@
+/* ── Grid view ───────────────────────────────────────────────────────────── */
+.grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap:                   var(--space-7);
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--space-4); }
+}
+@media (max-width: 400px) {
+  .grid { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+}
+
+/* ── List view ───────────────────────────────────────────────────────────── */
+.listStack { display: flex; flex-direction: column; gap: var(--space-2); }
+
+/* ── Compact view ────────────────────────────────────────────────────────── */
+.compactStack {
+  display:        flex;
+  flex-direction: column;
+  background:     var(--surface-raised);
+  border:         var(--border);
+  border-radius:  var(--radius);
+  overflow:       hidden;
+}
+
+/* ── Loading bar ─────────────────────────────────────────────────────────── */
+.loadingBar {
+  height:          2px;
+  background:      linear-gradient(90deg, transparent, var(--accent), transparent);
+  background-size: 200% 100%;
+  animation:       loadBar 1.2s var(--ease-in-out) infinite;
+  margin-bottom:   var(--space-6);
+  border-radius:   var(--radius-full);
+}
+@keyframes loadBar {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Results bar ─────────────────────────────────────────────────────────── */
+.resultsBar {
+  display:         flex;
+  align-items:     baseline;
+  justify-content: space-between;
+  margin-bottom:   var(--space-8);
+  padding-bottom:  var(--space-4);
+  border-bottom:   var(--border);
+  flex-wrap:       wrap;
+  gap:             var(--space-2);
+}
+
+/* inherits font-body */
+.resultsCount {
+  font-size: var(--text-base);
+  color:     var(--text-tertiary);
+}
+.resultsCount strong {
+  font-size:   var(--text-xl);
+  color:       var(--text-primary);
+  font-weight: var(--weight-medium);
+}
+
+.pageInfo {
+  font-family:    var(--font-display);
+  font-size:      var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color:          var(--text-tertiary);
+}
+
+/* ── Empty / error state ─────────────────────────────────────────────────── */
+.state {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  min-height:      400px;
+  text-align:      center;
+  gap:             var(--space-4);
+}
+.stateIcon  { font-size: var(--text-4xl); opacity: 0.3; }
+.stateTitle { font-size: var(--text-2xl); font-style: italic; color: var(--text-secondary); }
+.stateSub   { font-size: var(--text-base); color: var(--text-tertiary); max-width: 360px; }
