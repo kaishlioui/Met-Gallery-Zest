@@ -29,7 +29,7 @@ const urlParsers = {
   culture:   parseAsString,
   from:      parseAsInteger,
   to:        parseAsInteger,
-  highlight: parseAsBoolean,
+  highlight: parseAsBoolean.withDefault(true),
   page:      parseAsInteger,
 };
 

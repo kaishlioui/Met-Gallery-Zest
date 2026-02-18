@@ -12,6 +12,7 @@
 /* inherits font-body */
 .btn {
   font-size:       var(--text-base);
+  font-family:    var(--font-body);
   min-width:       38px;
   height:          38px;
   border:          1px solid var(--border-default);
